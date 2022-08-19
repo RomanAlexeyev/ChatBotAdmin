@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { classNames } from "primereact/utils";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { FilterMatchMode } from "primereact/api";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
+import { Dropdown } from "primereact/dropdown";
+import { TriStateCheckbox } from "primereact/tristatecheckbox";
 import { PlayersService } from "../../service/PlayersService";
 
 const levels = {
@@ -56,18 +59,13 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const initFilters = () => {
-    return;
-    // setFilters({
-    //     'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
-    //     'name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    //     'country.name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-    //     'representative': { value: null, matchMode: FilterMatchMode.IN },
-    //     'date': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
-    //     'balance': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-    //     'status': { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-    //     'activity': { value: null, matchMode: FilterMatchMode.BETWEEN },
-    //     'verified': { value: null, matchMode: FilterMatchMode.EQUALS }
-    // });
+    setFilters({
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+      telegram: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+      level: { value: null, matchMode: FilterMatchMode.EQUALS },
+      resume: { value: null, matchMode: FilterMatchMode.EQUALS },
+    });
   };
 
   const photoBodyTemplate = (rowData) => {
@@ -184,6 +182,34 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
     );
   };
 
+  const levelItemTemplate = (option) => {
+    return (
+      <span className={`player-badge level-${option}`}>{levels[option]}</span>
+    );
+  };
+
+  const levelFilterTemplate = (options) => {
+    return (
+      <Dropdown
+        value={options.value}
+        options={Object.keys(levels)}
+        onChange={(e) => options.filterApplyCallback(e.value)}
+        itemTemplate={levelItemTemplate}
+        placeholder="Уровень"
+        className="p-column-filter"
+      />
+    );
+  };
+
+  const resumeFilterTemplate = (options) => {
+    return (
+      <TriStateCheckbox
+        value={options.value}
+        onChange={(e) => options.filterApplyCallback(e.value)}
+      />
+    );
+  };
+
   return (
     <div className="col-12">
       <div className="card">
@@ -194,7 +220,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           rows={type === "mailing" ? 5 : 10}
           dataKey="id"
           filters={filters}
-          filterDisplay="menu"
+          filterDisplay="row"
           loading={loading}
           responsiveLayout="scroll"
           selection={selectedPlayers}
@@ -206,36 +232,47 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
               headerStyle={{ width: "3em" }}
             ></Column>
           )}
-          <Column field="photo" header=" " body={photoBodyTemplate} />
-          <Column field="name" header="Имя" style={{ minWidth: "12rem" }} />
+          <Column field="photo" header=" " body={photoBodyTemplate} style={{ width: "2rem" }} />
+          <Column
+            field="name"
+            header="Имя"
+            style={{ width: "16rem" }}
+            filter
+            showFilterMenu={false}
+          />
           <Column
             field="telegram"
             header="Телеграм"
-            style={{ minWidth: "12rem" }}
+            style={{ width: "16rem" }}
+            filter
+            showFilterMenu={false}
           />
           <Column
             field="points"
             header="Баллы"
-            style={{ minWidth: "12rem" }}
+            style={{ width: "12rem" }}
             body={pointsBodyTemplate}
           />
           <Column
             field="level"
             header="Уровень"
-            style={{ minWidth: "12rem" }}
+            style={{ width: "12rem" }}
             body={levelBodyTemplate}
+            filter
+            showFilterMenu={false}
+            filterElement={levelFilterTemplate}
           />
-          <Column field="email" header="Email" style={{ minWidth: "12rem" }} />
+          <Column field="email" header="Email" style={{ width: "20rem" }} />
           <Column
             field="occupation"
             header="Должность"
-            style={{ minWidth: "12rem" }}
+            style={{ width: "16rem" }}
           />
           {type === "statistics" && (
             <Column
               field="expectations"
               header="Ожидания"
-              style={{ minWidth: "12rem" }}
+              style={{ width: "24rem" }}
             />
           )}
           {type === "statistics" && (
@@ -243,8 +280,9 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
               field="resume"
               header="Резюме"
               dataType="boolean"
-              bodyClassName="text-center"
               body={resumeBodyTemplate}
+              filter
+              filterElement={resumeFilterTemplate}
             />
           )}
           {type === "statistics" && <Column field="friends" header="Друзья" />}
