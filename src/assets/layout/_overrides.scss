@@ -1,0 +1,35 @@
+//Suggested location to add your overrides so that migration would be easy by just updating the SASS folder in the future
+.p-datatable-wrapper {
+  overflow-y: hidden;
+}
+
+.dialog-footer-button {
+  margin-top: 20px;
+  
+}
+
+.right-answer-chip {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+}
+
+.task-question {
+  margin-top: 0.5rem;
+  max-width: 70%;
+}
+
+.task-card {
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question-input {
+  width: 100%;
+}
+
+.question-answer {
+  align-items: center;
+  width: 75%;
+}

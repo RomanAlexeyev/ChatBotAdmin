@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "id": "100",
+            "text": "Какой овощ больше всего любит автоматизатор?",
+            "answers": [
+                {
+                    "body": "Огурец",
+                    "isRight": false
+                },
+                {
+                    "body": "Морковь",
+                    "isRight": true
+                },
+                {
+                    "body": "Помидор",
+                    "isRight": false
+                }
+            ]
+        },
+        {
+            "id": "101",
+            "text": "На двери в отдел автоматизации написано: \"Здесь обеспечивают...\"",
+            "answers": [
+                {
+                    "body": "Прогресс",
+                    "isRight": true
+                },
+                {
+                    "body": "Стабильность",
+                    "isRight": false
+                },
+                {
+                    "body": "Регресс",
+                    "isRight": false
+                }
+            ]
+        },
+        {
+            "id": "102",
+            "text": "В каком году открылся первый офис компании?",
+            "answers": [
+                {
+                    "body": 2007,
+                    "isRight": false
+                },
+                {
+                    "body": 2008,
+                    "isRight": false
+                },
+                {
+                    "body": 2005,
+                    "isRight": true
+                }
+            ]
+        },
+        {
+            "id": "103",
+            "text": "Как называлась компания на момент основания?",
+            "answers": [
+                {
+                    "body": "Ракета",
+                    "isRight": false
+                },
+                {
+                    "body": "Космос",
+                    "isRight": true
+                },
+                {
+                    "body": "Галактика",
+                    "isRight": false
+                }
+            ]
+        },
+        {
+            "id": "104",
+            "text": "Сколько учредителей в компании?",
+            "answers": [
+                {
+                    "body": 2,
+                    "isRight": true
+                },
+                {
+                    "body": 10,
+                    "isRight": false
+                },
+                {
+                    "body": 5,
+                    "isRight": false
+                }
+            ]
+        },
+        {
+            "id": "105",
+            "text": "Сколько офисов компании находится на территории России?",
+            "answers": [
+                {
+                    "body": 12,
+                    "isRight": true
+                },
+                {
+                    "body": 20,
+                    "isRight": false
+                },
+                {
+                    "body": 18,
+                    "isRight": false
+                }
+            ]
+        }
+    ]
+}

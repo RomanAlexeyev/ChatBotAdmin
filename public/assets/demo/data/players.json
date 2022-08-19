@@ -1,0 +1,163 @@
+{
+    "data": [
+        {
+            "id": 1000,
+            "photo": "https://p.favim.com/orig/2019/03/25/selfies-ideas-photos-ideias-de-selfie-Favim.com-7026710.jpg",
+            "name": "Вероника",
+            "telegram": "veronika234235",
+            "points": 34000,
+            "level": "teamlead",
+            "email": "veronikastepantsova@gmail.com",
+            "occupation": "Бизнес-аналитик",
+            "expectations": "Затусить на after-party, познакомиться с новыми людьми",
+            "resume": true,
+            "friends": 45,
+            "groups": 5,
+            "posts": 8,
+            "right_answers": 12,
+            "for_moderation": {
+                "resume": {
+                    "link": "https://s29.q4cdn.com/816090369/files/doc_downloads/test.pdf",
+                    "verified": false
+                },
+                "posts": [
+                    {
+                        "id": "post23423523",
+                        "link": "https://habr.com/ru/company/psb/blog/651117/",
+                        "verified": false
+                    },
+                    {
+                        "id": "post234232523",
+                        "link": "https://habr.com/ru/company/psb/blog/669846/",
+                        "verified": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1001,
+            "photo": "http://st.depositphotos.com/2413271/5050/i/450/depositphotos_50503825-Handsome-Man-Taking-Selfie.jpg",
+            "name": "Игорь",
+            "telegram": "igorek4354",
+            "points": 33000,
+            "level": "teamlead",
+            "email": "v3454345@gmail.com",
+            "occupation": "Старший фронтенд-разработчик",
+            "expectations": "Получить массу новых впечатлений, выиграть главный приз",
+            "resume": true,
+            "friends": 42,
+            "groups": 2,
+            "posts": 3,
+            "right_answers": 10,
+            "for_moderation": {
+                "posts": [
+                    {
+                        "id": "post299993523",
+                        "link": "https://itproger.com/news/kak-pravilno-vesti-delovuyu-perepisku-v-messendzherah-7-pravil",
+                        "verified": false
+                    },
+                    {
+                        "id": "post299232523",
+                        "link": "https://itproger.com/news/izuchenie-tailwind-css-za-chas-razrabotka-proekta-s-nulya",
+                        "verified": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1002,
+            "photo": "https://thumbs.dreamstime.com/b/selfie-44978938.jpg",
+            "name": "Светлана",
+            "telegram": "sveta45354",
+            "points": 30000,
+            "level": "senior",
+            "email": "vswetkfff45@gmail.com",
+            "occupation": "Тестировщик",
+            "expectations": "Выиграть айфон",
+            "resume": false,
+            "friends": 35,
+            "groups": 5,
+            "posts": 7,
+            "right_answers": 4,
+            "for_moderation": {
+                "posts": [
+                    {
+                        "id": "post299993523",
+                        "link": "https://rb.ru/news/it-village/",
+                        "verified": false
+                    }
+                ],
+                "groups": [
+                    {
+                        "link": "https://career.habr.com/shterneregen",
+                        "verified": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1003,
+            "photo": "https://us.123rf.com/450wm/deagreez/deagreez1604/deagreez160400247/54648562-selfie-of-handsome-young-man.jpg?ver=6",
+            "name": "Петя",
+            "telegram": "petrdddd4",
+            "points": 25000,
+            "level": "middle",
+            "email": "vskkkkkkkkk546445645@gmail.com",
+            "occupation": "Аналитик",
+            "expectations": "Выиграть айфон",
+            "resume": true,
+            "friends": 34,
+            "groups": 7,
+            "posts": 8,
+            "right_answers": 4
+        },
+        {
+            "id": 1004,
+            "photo": "https://t3.ftcdn.net/jpg/02/74/77/88/360_F_274778800_m6SznxQuELSUfXHGqIsTXq1FNNCnY88B.jpg",
+            "name": "Василий",
+            "telegram": "vasya355445",
+            "points": 20000,
+            "level": "junior",
+            "email": "vskkr465645@gmail.com",
+            "occupation": "Программист",
+            "expectations": "Поскорее пойти домой",
+            "resume": false,
+            "friends": 12,
+            "groups": 5,
+            "posts": 8,
+            "right_answers": 12
+        },
+        {
+            "id": 1005,
+            "photo": "https://thumbs.dreamstime.com/b/image-closeup-pretty-blond-woman-looking-camera-taking-selfie-photo-living-room-s-wearing-white-t-shirt-smiling-147227009.jpg",
+            "name": "Надежда",
+            "telegram": "nadyua453454",
+            "points": 21000,
+            "level": "junior",
+            "email": "v4444@gmail.com",
+            "occupation": "Программист",
+            "expectations": "Поскорее пойти домой",
+            "resume": false,
+            "friends": 12,
+            "groups": 5,
+            "posts": 8,
+            "right_answers": 12
+        },
+        {
+            "id": 1006,
+            "photo": "https://i.pinimg.com/736x/e0/09/ce/e009ce051a820efba61f80a63a61bd8e.jpg",
+            "name": "Татьяна",
+            "telegram": "tanys4545",
+            "points": 12000,
+            "level": "trainee",
+            "email": "v44343434@gmail.com",
+            "occupation": "Офис менеджер",
+            "expectations": "Познакомиться с людьми",
+            "resume": false,
+            "friends": 24,
+            "groups": 2,
+            "posts": 0,
+            "right_answers": 10
+        }
+    ]
+}
