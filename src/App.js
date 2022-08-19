@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Route, Routes } from 'react-router-dom';
 import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
@@ -12,16 +13,17 @@ import QuizTasks from "./components/pages/QuizTasks";
 import Mailing from "./components/pages/Mailing";
 
 function App() {
-  const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className="layout-wrapper layout-overlay layout-theme-light">
-      <AppTopbar activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <AppTopbar />
       <div className="layout-main-container">
         <div className="layout-main">
-          {activeIndex === 0 && <Statistics />}
-          {activeIndex === 1 && <Moderation />}
-          {activeIndex === 2 && <QuizTasks />}
-          {activeIndex === 3 && <Mailing />}
+          <Routes>
+            <Route path="/" exact element={<Statistics />} />
+            <Route path="/moderation"  element={<Moderation />} />
+            <Route path="/quiz"  element={<QuizTasks />} />
+            <Route path="/mailing"  element={<Mailing />} />
+          </Routes>
         </div>
       </div>
     </div>

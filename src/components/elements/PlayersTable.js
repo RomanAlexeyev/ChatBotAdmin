@@ -100,6 +100,14 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
     );
   };
 
+  const telegramBodyTemplate = (rowData) => {
+    return (
+      <div className="flex align-items-center telegram">
+        <i className="pi pi-telegram mr-2"></i> <span>{rowData.telegram}</span>
+      </div>
+    );
+  };
+
   const resumeBodyTemplate = (rowData) => {
     return (
       <i
@@ -232,7 +240,12 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
               headerStyle={{ width: "3em" }}
             ></Column>
           )}
-          <Column field="photo" header=" " body={photoBodyTemplate} style={{ width: "2rem" }} />
+          <Column
+            field="photo"
+            header=" "
+            body={photoBodyTemplate}
+            style={{ width: "2rem" }}
+          />
           <Column
             field="name"
             header="Имя"
@@ -243,6 +256,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           <Column
             field="telegram"
             header="Телеграм"
+            body={telegramBodyTemplate}
             style={{ width: "16rem" }}
             filter
             showFilterMenu={false}
