@@ -8,6 +8,7 @@ import { Dialog } from "primereact/dialog";
 import { Dropdown } from "primereact/dropdown";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
 import { PlayersService } from "../../service/PlayersService";
+import ReviewBody from "./ReviewBody";
 
 const levels = {
   trainee: "Стажер",
@@ -32,9 +33,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState(null);
 
-  const [currentResume, setCurrentResume] = useState(null);
-  const [currentPosts, setCurrentPosts] = useState(null);
-  const [currentGroups, setCurrentGroups] = useState(null);
+  const [currentForReview, setCurrentForReview] = useState(null);
   const [resumeModal, setResumeModal] = useState(false);
   const [postsModal, setPostsModal] = useState(false);
   const [groupsModal, setGroupsModal] = useState(false);
@@ -120,17 +119,17 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   };
   const renderResumeFooter = () => {
     return (
-      <div className="dialog-footer-button">
+      <div className="dialog-footer-button center">
         <Button
           label="Подтвердить и начислить 150 баллов"
           onClick={() => setResumeModal(false)}
-          className="p-button-text"
+          className="p-button"
         />
       </div>
     );
   };
 
-  const renderPostsFooter = () => {
+  const renderEmptyFooter = () => {
     return <div></div>;
   };
 
@@ -142,7 +141,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           label="Проверить"
           aria-label="Проверить"
           onClick={() => {
-            setCurrentResume(rowData.for_moderation.resume);
+            setCurrentForReview(rowData);
             setResumeModal(!resumeModal);
           }}
         />
@@ -162,7 +161,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           }`}
           aria-label="Проверить"
           onClick={() => {
-            setCurrentPosts(rowData.for_moderation.posts);
+            setCurrentForReview(rowData);
             setPostsModal(!postsModal);
           }}
         />
@@ -182,7 +181,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           }`}
           aria-label="Проверить"
           onClick={() => {
-            setCurrentGroups(rowData.for_moderation.groups);
+            setCurrentForReview(rowData);
             setGroupsModal(!groupsModal);
           }}
         />
@@ -196,6 +195,20 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
     );
   };
 
+  const selectedLevelItemTemplate = (option, props) => {
+    if (option) {
+        return (
+          <span className={`player-badge level-${option}`}>{levels[option]}</span>
+        );
+    }
+
+    return (
+        <span>
+            {props.placeholder}
+        </span>
+    );
+}
+
   const levelFilterTemplate = (options) => {
     return (
       <Dropdown
@@ -203,6 +216,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
         options={Object.keys(levels)}
         onChange={(e) => options.filterApplyCallback(e.value)}
         itemTemplate={levelItemTemplate}
+        valueTemplate={selectedLevelItemTemplate}
         placeholder="Уровень"
         className="p-column-filter"
       />
@@ -319,29 +333,29 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
         <Dialog
           header="Проверка резюме"
           visible={resumeModal}
-          style={{ width: "50vw" }}
+          style={{ width: "33vw" }}
           footer={renderResumeFooter}
           onHide={() => setResumeModal(false)}
         >
-          {currentResume?.link}
+          <ReviewBody data={currentForReview} levels={levels} formatNumber={formatNumber} type="resume"/>
         </Dialog>
         <Dialog
           header="Проверка постов"
           visible={postsModal}
-          style={{ width: "50vw" }}
-          footer={renderPostsFooter}
+          style={{ width: "33vw" }}
+          footer={renderEmptyFooter}
           onHide={() => setPostsModal(false)}
         >
-          {currentPosts && currentPosts.map((post) => post?.link)}
+          <ReviewBody data={currentForReview} levels={levels} formatNumber={formatNumber} type="posts"/>
         </Dialog>
         <Dialog
           header="Проверка групп"
           visible={groupsModal}
-          style={{ width: "50vw" }}
-          footer={renderPostsFooter}
+          style={{ width: "33vw" }}
+          footer={renderEmptyFooter}
           onHide={() => setGroupsModal(false)}
         >
-          {currentGroups && currentGroups.map((group) => group?.link)}
+          <ReviewBody data={currentForReview} levels={levels} formatNumber={formatNumber} type="groups"/>
         </Dialog>
       </div>
     </div>

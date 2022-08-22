@@ -17,6 +17,7 @@
             "right_answers": 12,
             "for_moderation": {
                 "resume": {
+                    "filename": "veronikastepantsovarezume.pdf",
                     "link": "https://s29.q4cdn.com/816090369/files/doc_downloads/test.pdf",
                     "verified": false
                 },
@@ -89,6 +90,7 @@
                 ],
                 "groups": [
                     {
+                        "id": "213123523",
                         "link": "https://career.habr.com/shterneregen",
                         "verified": false
                     }
