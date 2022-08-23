@@ -19,11 +19,12 @@ const initAnswers = [
 
 function QuestionDialogBody({ task }) {
   const [questionText, setQuestionText] = useState(task?.text || "");
-  const [questionAnswers, setQuestionAnswers] = useState(task?.answers || initAnswers);
+  const [questionAnswers, setQuestionAnswers] = useState(task?.answers ? task.answers.map(ans => ({...ans})) : initAnswers);
 
   const editAnswer = (val, i, type) => {
-    let answers = [...questionAnswers];
     if (type === "isRight" && val === false) return;
+
+    let answers = [...questionAnswers];
     answers[i][type] = val;
     if (type === "isRight") {
       answers.map((item, idx) => {
@@ -34,6 +35,8 @@ function QuestionDialogBody({ task }) {
     }
     setQuestionAnswers(answers);
   };
+
+  console.log(questionAnswers)
 
   const renderAnswer = (ans, i) => {
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { classNames } from "primereact/utils";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -7,7 +7,6 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Dropdown } from "primereact/dropdown";
 import { TriStateCheckbox } from "primereact/tristatecheckbox";
-import { PlayersService } from "../../service/PlayersService";
 import ReviewBody from "./ReviewBody";
 
 const levels = {
@@ -29,43 +28,19 @@ function formatNumber(num) {
 }
 
 function PlayersTable({ type, selectedPlayers, setSelectedPlayers, data, loading }) {
-  // const [players, setPlayers] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState(null);
+
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    telegram: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    level: { value: null, matchMode: FilterMatchMode.EQUALS },
+    resume: { value: null, matchMode: FilterMatchMode.EQUALS },
+  });
 
   const [currentForReview, setCurrentForReview] = useState(null);
   const [resumeModal, setResumeModal] = useState(false);
   const [postsModal, setPostsModal] = useState(false);
   const [groupsModal, setGroupsModal] = useState(false);
-
-  // const playersService = new PlayersService();
-
-  useEffect(() => {
-    // setLoading(true);
-    // if (type === "moderation") {
-    //   playersService.getPlayersForModeration().then((data) => {
-    //     setPlayers(data);
-    //     setLoading(false);
-    //   });
-    // } else {
-    //   playersService.getPlayers().then((data) => {
-    //     setPlayers(data);
-    //     setLoading(false);
-    //   });
-    // }
-
-    initFilters();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const initFilters = () => {
-    setFilters({
-      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-      telegram: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-      level: { value: null, matchMode: FilterMatchMode.EQUALS },
-      resume: { value: null, matchMode: FilterMatchMode.EQUALS },
-    });
-  };
 
   const photoBodyTemplate = (rowData) => {
     return (

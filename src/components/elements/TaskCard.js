@@ -31,7 +31,7 @@ function TaskCard({ data, setModal, setTaskForEdit, confirmDelete }) {
               icon="pi pi-cog"
               className="p-button-rounded p-button-secondary p-button-text"
               aria-label="Редактировать"
-              onClick={() => editQuestion()}
+              onClick={editQuestion}
             />
             <Button
               icon="pi pi-trash"
