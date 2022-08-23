@@ -1,6 +1,12 @@
 import React from "react";
 import { Button } from "primereact/button";
 
+const titles = {
+    resume: "Резюме:",
+    posts: "Посты:",
+    groups: "Группы:"
+}
+
 function ReviewBody({ data, levels, formatNumber, type }) {
   console.log(data);
   return (
@@ -37,13 +43,7 @@ function ReviewBody({ data, levels, formatNumber, type }) {
       </div>
       <div>
         <h5>
-          {type === "resume"
-            ? "Резюме:"
-            : type === "posts"
-            ? "Посты:"
-            : type === "groups"
-            ? "Группы:"
-            : ""}
+          {titles[type]}
         </h5>
         {type === "resume" && (
           <div
@@ -68,7 +68,6 @@ function ReviewBody({ data, levels, formatNumber, type }) {
               return (
                 <div className="flex align-items-center justify-content-between mb-3">
                   <div className="col-6">
-                    {" "}
                     <a
                       key={post.id}
                       href={post.link}
@@ -96,7 +95,6 @@ function ReviewBody({ data, levels, formatNumber, type }) {
               return (
                 <div className="flex align-items-center justify-content-between mb-3">
                   <div className="col-6">
-                    {" "}
                     <a
                       key={group.id}
                       href={group.link}

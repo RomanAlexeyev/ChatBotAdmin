@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { TabMenu } from "primereact/tabmenu";
 
@@ -7,11 +7,16 @@ const indices = {
   "/moderation": 1,
   "/quiz": 2,
   "/mailing": 3,
-}
+};
 
 export const AppTopbar = () => {
-
   const location = useLocation();
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveIndex(indices[location.pathname]);
+  }, [location]);
 
   const items = [
     {
@@ -49,7 +54,7 @@ export const AppTopbar = () => {
       <Link to="/" className="layout-topbar-logo">
         <span>ChatBotAdmin</span>
       </Link>
-      <TabMenu model={items} activeIndex={indices[location.pathname]} />
+      <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
     </div>
   );
 };

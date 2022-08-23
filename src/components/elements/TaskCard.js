@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
-function TaskCard({ data, setModal, setTaskForEdit }) {
+function TaskCard({ data, setModal, setTaskForEdit, confirmDelete }) {
   const getAnswers = () => {
     return data.answers.map((answer, i) => {
       return (
@@ -18,7 +18,7 @@ function TaskCard({ data, setModal, setTaskForEdit }) {
   const editQuestion = () => {
     setTaskForEdit(data);
     setModal("edit");
-  }
+  };
   return (
     <div className="col-12 lg:col-6 xl:col-3">
       <div className="card mb-0 task-card">
@@ -30,8 +30,14 @@ function TaskCard({ data, setModal, setTaskForEdit }) {
             <Button
               icon="pi pi-cog"
               className="p-button-rounded p-button-secondary p-button-text"
-              aria-label="Cog"
+              aria-label="Редактировать"
               onClick={() => editQuestion()}
+            />
+            <Button
+              icon="pi pi-trash"
+              className="p-button-rounded p-button-danger p-button-text"
+              aria-label="Удалить"
+              onClick={() => confirmDelete(data.id)}
             />
           </div>
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { QuizService } from "../../service/QuizService";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import TaskCard from "../elements/TaskCard";
 import QuestionDialogBody from "../elements/QuestionDialogBody";
 
@@ -25,13 +26,34 @@ function QuizTasks() {
       <Button
         label="Сохранить"
         aria-label="Submit"
-        onClick={() => {setModal(null); setTaskForEdit(null)}}
+        onClick={() => {
+          setModal(null);
+          setTaskForEdit(null);
+        }}
       />
     );
   };
 
+  const acceptFunc = (id) => {
+    console.log(id);
+  };
+
+  const confirmDelete = (id) => {
+    confirmDialog({
+      message: "Вы действительно хотите удалить этот вопрос?",
+      header: "Подтвердите удаление",
+      icon: "pi pi-info-circle",
+      acceptClassName: "p-button-danger",
+      acceptLabel: "Да",
+      rejectLabel: "Нет",
+      accept: () => acceptFunc(id),
+      // reject: () => rejectFunc()
+    });
+  };
+
   return (
     <>
+      <ConfirmDialog />
       <div className="mb-6">
         <Button
           label="Создать"
@@ -47,11 +69,12 @@ function QuizTasks() {
             data={task}
             setModal={setModal}
             setTaskForEdit={setTaskForEdit}
+            confirmDelete={confirmDelete}
           />
         ))}
       </div>
       <Dialog
-        header={modal === "edit" ? "Редактировать" : "Создать"}
+        header={modal === "edit" ? "Редактировать вопрос" : "Создать вопрос"}
         visible={modal !== null}
         style={{ width: "33vw" }}
         footer={renderEditFooter}

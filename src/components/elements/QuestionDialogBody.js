@@ -37,7 +37,7 @@ function QuestionDialogBody({ task }) {
 
   const renderAnswer = (ans, i) => {
     return (
-      <div className="flex justify-content-between mb-4 question-answer">
+      <div className="flex justify-content-between mb-4 question-answer" key={i}>
         <InputText
           value={ans.body}
           onChange={(e) => editAnswer(e.target.value, i, "body")}
