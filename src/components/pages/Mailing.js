@@ -4,12 +4,12 @@ import { Button } from "primereact/button";
 
 import PlayersTable from "../elements/PlayersTable";
 
-function Mailing() {
+function Mailing({ data, loading }) {
   const [selectedPlayers, setSelectedPlayers] = useState([]);
   const [message, setMessage] = useState("");
   const sendMessage = () => {
     setMessage("");
-    setSelectedPlayers([])
+    setSelectedPlayers([]);
   };
   return (
     <>
@@ -17,6 +17,8 @@ function Mailing() {
         type="mailing"
         selectedPlayers={selectedPlayers}
         setSelectedPlayers={setSelectedPlayers}
+        data={data}
+        loading={loading}
       />
       <h5 className="mb-5">Сообщение:</h5>
       <InputTextarea
@@ -26,7 +28,13 @@ function Mailing() {
         cols={150}
         autoResize
       />
-      <Button label="Отправить" aria-label="Submit" onClick={sendMessage} disabled={selectedPlayers.length === 0 || message === ""} className="mb-1 ml-4" />
+      <Button
+        label="Отправить"
+        aria-label="Submit"
+        onClick={sendMessage}
+        disabled={selectedPlayers.length === 0 || message === ""}
+        className="mb-1 ml-4"
+      />
     </>
   );
 }

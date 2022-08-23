@@ -8,7 +8,6 @@ const titles = {
 }
 
 function ReviewBody({ data, levels, formatNumber, type }) {
-  console.log(data);
   return (
     <>
       <div className="mb-4">
@@ -51,20 +50,20 @@ function ReviewBody({ data, levels, formatNumber, type }) {
             style={{ width: "50%" }}
           >
             <a
-              href={data.for_moderation.resume.link}
+              href={data.forModeration.resume.link}
               target="_blank"
               rel="noopener noreferrer"
               className="flex align-items-center"
             >
               <i className="pi pi-file-pdf mr-2"></i>{" "}
-              <span>{data.for_moderation.resume.filename}</span>
+              <span>{data.forModeration.resume.filename}</span>
             </a>
           </div>
         )}
 
         {type === "posts" && (
           <div>
-            {data.for_moderation.posts.map((post) => {
+            {data.forModeration.posts.map((post) => {
               return (
                 <div className="flex align-items-center justify-content-between mb-3">
                   <div className="col-6">
@@ -91,7 +90,7 @@ function ReviewBody({ data, levels, formatNumber, type }) {
 
         {type === "groups" && (
           <div>
-            {data.for_moderation.groups.map((group) => {
+            {data.forModeration.groups.map((group) => {
               return (
                 <div className="flex align-items-center justify-content-between mb-3">
                   <div className="col-6">

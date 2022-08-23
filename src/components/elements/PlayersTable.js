@@ -28,9 +28,9 @@ function formatNumber(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
-function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
+function PlayersTable({ type, selectedPlayers, setSelectedPlayers, data, loading }) {
+  // const [players, setPlayers] = useState([]);
+  // const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState(null);
 
   const [currentForReview, setCurrentForReview] = useState(null);
@@ -38,21 +38,21 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   const [postsModal, setPostsModal] = useState(false);
   const [groupsModal, setGroupsModal] = useState(false);
 
-  const playersService = new PlayersService();
+  // const playersService = new PlayersService();
 
   useEffect(() => {
-    setLoading(true);
-    if (type === "moderation") {
-      playersService.getPlayersForModeration().then((data) => {
-        setPlayers(data);
-        setLoading(false);
-      });
-    } else {
-      playersService.getPlayers().then((data) => {
-        setPlayers(data);
-        setLoading(false);
-      });
-    }
+    // setLoading(true);
+    // if (type === "moderation") {
+    //   playersService.getPlayersForModeration().then((data) => {
+    //     setPlayers(data);
+    //     setLoading(false);
+    //   });
+    // } else {
+    //   playersService.getPlayers().then((data) => {
+    //     setPlayers(data);
+    //     setLoading(false);
+    //   });
+    // }
 
     initFilters();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -134,7 +134,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   };
 
   const resumeVerifyBodyTemplate = (rowData) => {
-    if (!rowData.for_moderation.resume) return null;
+    if (!rowData?.forModeration?.resume) return null;
     return (
       <>
         <Button
@@ -150,13 +150,13 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   };
 
   const postsVerifyBodyTemplate = (rowData) => {
-    if (!rowData.for_moderation.posts) return null;
+    if (!rowData?.forModeration?.posts) return null;
     return (
       <>
         <Button
           label={`Проверить${
-            rowData.for_moderation.posts.length > 1
-              ? " (" + rowData.for_moderation.posts.length + ")"
+            rowData.forModeration.posts.length > 1
+              ? " (" + rowData.forModeration.posts.length + ")"
               : ""
           }`}
           aria-label="Проверить"
@@ -170,13 +170,13 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
   };
 
   const groupsVerifyBodyTemplate = (rowData) => {
-    if (!rowData.for_moderation.groups) return null;
+    if (!rowData?.forModeration?.groups) return null;
     return (
       <>
         <Button
           label={`Проверить${
-            rowData.for_moderation.groups.length > 1
-              ? " (" + rowData.for_moderation.groups.length + ")"
+            rowData.forModeration.groups.length > 1
+              ? " (" + rowData.forModeration.groups.length + ")"
               : ""
           }`}
           aria-label="Проверить"
@@ -237,7 +237,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
       <div className="card">
         <h5>{tableNames[type]}</h5>
         <DataTable
-          value={players}
+          value={data}
           paginator
           rows={type === "mailing" ? 5 : 10}
           dataKey="id"
@@ -247,6 +247,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
           responsiveLayout="scroll"
           selection={selectedPlayers}
           onSelectionChange={(e) => setSelectedPlayers(e.value)}
+          emptyMessage="Нет данных для отображения"
         >
           {type === "mailing" && (
             <Column

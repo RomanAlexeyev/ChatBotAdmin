@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import PlayersTable from "../elements/PlayersTable";
 
-function Statistics() {
+function Statistics({data, loading}) {
   return (
     <div className="grid">
       <div className="col-12 lg:col-6 xl:col-3">
@@ -59,7 +59,7 @@ function Statistics() {
         </div>
       </div>
 
-      <PlayersTable type="statistics"/>
+      <PlayersTable type="statistics" data={data} loading={loading}/>
     </div>
   );
 }

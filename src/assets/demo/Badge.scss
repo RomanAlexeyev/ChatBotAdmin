@@ -1,58 +1,67 @@
 .player-badge {
-    border-radius: var(--border-radius);
-    padding: .25em .5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .3px;
+  border-radius: var(--border-radius);
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
 
-    &.level-trainee {
-        background: #d8d8d8;
-        color: #5e5e5e;
-    }
+  &.level-trainee {
+    background: #d8d8d8;
+    color: #5e5e5e;
+  }
 
-    &.level-junior {
-        background: #b8e6b2;
-        color: #24830c;
-    }
+  &.level-junior {
+    background: #b8e6b2;
+    color: #24830c;
+  }
 
-    &.level-middle {
-        background: #f8f68f;
-        color: #bea30a;
-    }
+  &.level-middle {
+    background: #f8f68f;
+    color: #bea30a;
+  }
 
-    &.level-senior {
-        background: #ffb26b;
-        color: #c44d08;
-    }
+  &.level-senior {
+    background: #ffb26b;
+    color: #c44d08;
+  }
 
-    &.level-teamlead {
-        background: #ff9a9a;
-        color: #b91313;
-    }
+  &.level-teamlead {
+    background: #ff9a9a;
+    color: #b91313;
+  }
 }
 
 .points-badge {
-    font-weight: 700;
-    font-size: 12px;
+  font-weight: 700;
+  font-size: 12px;
 
-    &.level-trainee {
-        color: #919191;
-    }
+  &.level-trainee {
+    color: #919191;
+  }
 
-    &.level-junior {
-        color: #27a308;
-    }
+  &.level-junior {
+    color: #27a308;
+  }
 
-    &.level-middle {
-        color: #e2a808;
-    }
+  &.level-middle {
+    color: #e2a808;
+  }
 
-    &.level-senior {
-        color: #e64d06;
-    }
+  &.level-senior {
+    color: #e64d06;
+  }
 
-    &.level-teamlead {
-        color: #e20b0b;
-    }
+  &.level-teamlead {
+    color: #e20b0b;
+  }
+}
+
+.moderation-badge {
+  position: absolute;
+  left: 7px;
+  top: 9px;
+  min-width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
 }

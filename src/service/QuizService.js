@@ -1,9 +1,13 @@
-import axios from "axios";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export class QuizService {
-  getTasks() {
-    return axios
-      .get("assets/demo/data/quiz_tasks.json")
-      .then((res) => res.data.data);
-  }
-}
+export const quizAPI = createApi({
+  reducerPath: "quizAPI",
+  baseQuery: fetchBaseQuery({baseUrl: "assets/demo/data/"}),
+  endpoints: (build) => ({
+    getAllTasks: build.query({
+      query: () => ({
+        url: "quiz_tasks.json"
+      })
+    }),
+  })
+})

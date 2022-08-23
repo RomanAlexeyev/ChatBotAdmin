@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-import { QuizService } from "../../service/QuizService";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import TaskCard from "../elements/TaskCard";
 import QuestionDialogBody from "../elements/QuestionDialogBody";
 
-function QuizTasks() {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
+function QuizTasks({data, loading}) {
+
   const [modal, setModal] = useState(null);
   const [taskForEdit, setTaskForEdit] = useState(null);
-  const quizService = new QuizService();
-
-  useEffect(() => {
-    setLoading(true);
-    quizService.getTasks().then((data) => {
-      setTasks(data);
-      setLoading(false);
-    });
-  }, []);
 
   const renderEditFooter = () => {
     return (
@@ -63,7 +52,7 @@ function QuizTasks() {
       </div>
       <h5 className="mb-5">Разыгранные вопросы:</h5>
       <div className="grid">
-        {tasks.map((task) => (
+        {data && data.map((task) => (
           <TaskCard
             key={task.id}
             data={task}
