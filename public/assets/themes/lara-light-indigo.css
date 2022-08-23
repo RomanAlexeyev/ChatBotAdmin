@@ -2642,6 +2642,10 @@
   border-bottom-right-radius: 6px;
 }
 
+.p-column-filter.level {
+  width: 12rem;
+}
+
 .p-column-filter-row .p-column-filter-menu-button,
 .p-column-filter-row .p-column-filter-clear-button {
   margin-left: 0.5rem;

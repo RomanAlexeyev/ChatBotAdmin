@@ -218,7 +218,7 @@ function PlayersTable({ type, selectedPlayers, setSelectedPlayers }) {
         itemTemplate={levelItemTemplate}
         valueTemplate={selectedLevelItemTemplate}
         placeholder="Уровень"
-        className="p-column-filter"
+        className="p-column-filter level"
       />
     );
   };
